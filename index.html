@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escola Azul - Valo Grande</title>
+    <meta name="description" content="Projeto Escola Azul. Explorando a história, o impacto e as memórias do Valo Grande em Iguape.">
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#fdfbf7', // Light warm beige
+                        surface: '#ffffff', // White
+                        surfaceLight: '#f5f5f0', // Light earthy tone
+                        primary: '#0ea5e9', // Blue
+                        primaryGlow: '#bae6fd', // Light Blue
+                        secondary: '#10b981', // Green
+                        tertiary: '#92400e', // Rich Brown
+                        textMain: '#292524', // Stone 800
+                        textMuted: '#57534e', // Stone 600
+                        borderWhite: 'rgba(0, 0, 0, 0.08)'
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-background text-textMain font-sans antialiased selection:bg-primary selection:text-white">
+    
+    <!-- Ambient Glow Background -->
+    <div class="fixed inset-0 z-[-1] pointer-events-none overflow-hidden">
+        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-secondary/10 blur-[120px]"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-primary/10 blur-[120px]"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="glass-panel flex items-center justify-between px-6 py-3 rounded-full border border-borderWhite">
+                <a href="#inicio" class="flex items-center gap-2 group">
+                    <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-[0_0_15px_rgba(59,130,246,0.5)] group-hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.381z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <span class="font-bold text-lg tracking-tight">Escola Azul</span>
+                </a>
+                
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="#historia" class="text-sm font-medium text-textMuted hover:text-textMain transition-colors">História</a>
+                    <a href="#fotos" class="text-sm font-medium text-textMuted hover:text-textMain transition-colors">Fotos</a>
+                    <a href="#memorias" class="text-sm font-medium text-textMuted hover:text-textMain transition-colors">Memórias</a>
+                    <a href="#artigos" class="text-sm font-medium text-textMuted hover:text-textMain transition-colors">Artigos</a>
+                </nav>
+                
+                <div class="hidden md:block">
+                    <a href="#contribua" class="btn-primary px-5 py-2 rounded-full text-sm font-semibold transition-all">
+                        Contribua
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Toggle -->
+                <button id="mobile-menu-btn" class="md:hidden text-textMuted hover:text-textMain">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile Nav (Hidden by default) -->
+            <div id="mobile-nav" class="hidden mt-2 glass-panel rounded-2xl border border-borderWhite p-4 flex-col gap-4">
+                <a href="#historia" class="mobile-link text-sm font-medium text-textMuted hover:text-textMain px-2 py-1">História</a>
+                <a href="#fotos" class="mobile-link text-sm font-medium text-textMuted hover:text-textMain px-2 py-1">Fotos</a>
+                <a href="#memorias" class="mobile-link text-sm font-medium text-textMuted hover:text-textMain px-2 py-1">Memórias</a>
+                <a href="#artigos" class="mobile-link text-sm font-medium text-textMuted hover:text-textMain px-2 py-1">Artigos</a>
+                <a href="#contribua" class="mobile-link text-primary font-semibold px-2 py-1">Contribua com a História</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="inicio" class="min-h-screen flex items-center justify-center pt-24 pb-12 px-6 relative overflow-hidden">
+            <!-- Background Carousel -->
+            <div class="absolute inset-0 z-[-2]">
+                <div class="swiper heroBgSwiper w-full h-full">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="https://images.unsplash.com/photo-1542385151-efd9000785a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Rio" class="w-full h-full object-cover">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Mata Atlântica" class="w-full h-full object-cover">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="https://images.unsplash.com/photo-1518182170546-076616fd44e5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Natureza" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Clean Light Overlay to maintain UI+ legibility -->
+            <div class="absolute inset-0 bg-background/90 z-[-1] backdrop-blur-[2px]"></div>
+            
+            <div class="max-w-4xl mx-auto text-center z-10 flex flex-col items-center">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primaryGlow text-xs font-semibold tracking-wide uppercase mb-8">
+                    <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                    Projeto Escola Azul
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-[1.1]">
+                    A ferida aberta de <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-primary">Iguape</span>
+                </h1>
+                
+                <p class="text-lg md:text-xl text-textMuted mb-10 max-w-2xl leading-relaxed">
+                    Explore a história, o impacto ambiental e as memórias esquecidas do Valo Grande. Um canal construído por mãos escravizadas que alterou para sempre a geografia e a vida de uma cidade.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                    <a href="#historia" class="btn-primary px-8 py-4 rounded-full text-base font-semibold transition-all text-center">
+                        Explorar a História
+                    </a>
+                    <a href="#contribua" class="glass-btn px-8 py-4 rounded-full text-base font-semibold transition-all border border-borderWhite hover:bg-black/5 text-center text-textMain">
+                        Contribuir com Acervo
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <a href="#historia" class="text-textMuted hover:text-textMain transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- História Section (Bento Box) -->
+        <section id="historia" class="py-24 px-6 max-w-7xl mx-auto relative">
+            <div class="mb-16 text-center md:text-left">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">A História do Valo Grande</h2>
+                <p class="text-textMuted max-w-2xl">Um projeto ambicioso que se transformou em um desastre ecológico. Conheça a linha do tempo e o impacto.</p>
+            </div>
+
+            <!-- Bento Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[250px]">
+                
+                <!-- Card 1: Large -->
+                <div class="bento-card col-span-1 md:col-span-2 lg:col-span-2 row-span-2 relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1445217143695-467124038776?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Rio Ribeiro de Iguape" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-50 transition-opacity duration-500">
+                    <div class="absolute inset-0 p-8 flex flex-col justify-end z-20">
+                        <div class="text-primary text-sm font-bold tracking-wider mb-2">1779 - 1828</div>
+                        <h3 class="text-2xl font-bold mb-2">Uma Ferida Sócio-Ambiental</h3>
+                        <p class="text-textMuted text-sm">Considerada a primeira obra hídrica nacional, a abertura do canal foi decidida contrariando a opinião técnica de engenheiros para facilitar o transporte. As obras iniciaram em 1827.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bento-card col-span-1 md:col-span-1 lg:col-span-2 relative overflow-hidden group p-6 flex flex-col justify-center">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-primaryGlow">O Crescimento</h3>
+                    <p class="text-sm text-textMuted">Quando aberto em 1848, o valo contava com apenas 4,40 metros. A força das águas foi implacável: em 1869 já possuía 26 metros e em 1871 chegou a 36 metros.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bento-card col-span-1 flex flex-col items-center justify-center text-center p-6">
+                    <span class="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-white to-gray-500 mb-2">4,4m</span>
+                    <span class="text-sm text-textMuted">Largura Inicial (1848)</span>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bento-card col-span-1 flex flex-col items-center justify-center text-center p-6">
+                    <span class="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-secondary to-primary mb-2">36m</span>
+                    <span class="text-sm text-textMuted">Largura em 1871</span>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="bento-card col-span-1 md:col-span-2 row-span-1 p-6 relative overflow-hidden">
+                    <div class="relative z-10 flex flex-col h-full justify-between">
+                        <div>
+                            <h3 class="text-lg font-bold mb-1">Custeio da Obra</h3>
+                            <p class="text-sm text-textMuted">Os recursos eram fornecidos pela população e empréstimos da Fazenda Nacional. Em 1837, foi criado um imposto sobre o arroz destinado à obra.</p>
+                        </div>
+                        <a href="#" class="text-primary text-sm font-semibold hover:text-primaryGlow inline-flex items-center gap-1">
+                            Ler artigo completo <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fotos Section -->
+        <section id="fotos" class="py-24 px-6 relative bg-surfaceLight/30 border-y border-borderWhite overflow-hidden">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4">Galeria de Registros</h2>
+                        <p class="text-textMuted max-w-xl">Um contraste visual entre o passado próspero do ciclo do arroz e a realidade atual do canal.</p>
+                    </div>
+                    <!-- Custom Swiper Navigation -->
+                    <div class="flex gap-4">
+                        <button class="swiper-button-prev-custom w-12 h-12 rounded-full border border-borderWhite flex items-center justify-center hover:bg-surface transition-colors text-textMuted hover:text-white group">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 group-hover:-translate-x-1 transition-transform"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+                        </button>
+                        <button class="swiper-button-next-custom w-12 h-12 rounded-full border border-borderWhite flex items-center justify-center hover:bg-surface transition-colors text-textMuted hover:text-white group">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 group-hover:translate-x-1 transition-transform"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Swiper -->
+                <div class="swiper mySwiper overflow-visible">
+                    <div class="swiper-wrapper">
+                        <!-- Slide 1 -->
+                        <div class="swiper-slide group relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-video cursor-pointer border border-borderWhite">
+                            <img src="https://images.unsplash.com/photo-1544465544-1b71aee9dfa3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Iguape Antiga" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                <div>
+                                    <h4 class="font-bold text-white mb-1">Porto de Iguape (1890)</h4>
+                                    <p class="text-xs text-gray-300">Acervo Histórico</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="swiper-slide group relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-video cursor-pointer border border-borderWhite">
+                            <img src="https://images.unsplash.com/photo-1505322022379-7c3353ee6291?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Rio atual" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                <div>
+                                    <h4 class="font-bold text-white mb-1">Valo Grande Hoje</h4>
+                                    <p class="text-xs text-gray-300">Foto Comunitária</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 3 -->
+                        <div class="swiper-slide group relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-video cursor-pointer border border-borderWhite">
+                            <img src="https://images.unsplash.com/photo-1437482078695-73f5ca6c96e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ruínas" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                <div>
+                                    <h4 class="font-bold text-white mb-1">Margens Erodidas</h4>
+                                    <p class="text-xs text-gray-300">Impacto Ambiental</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 4 -->
+                        <div class="swiper-slide group relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-video cursor-pointer border border-borderWhite">
+                            <img src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Natureza retomando" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                <div>
+                                    <h4 class="font-bold text-white mb-1">A Força da Natureza</h4>
+                                    <p class="text-xs text-gray-300">Beleza e Caos</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 5 -->
+                        <div class="swiper-slide group relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-video cursor-pointer border border-borderWhite">
+                            <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mata Atlântica" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                <div>
+                                    <h4 class="font-bold text-white mb-1">Resiliência</h4>
+                                    <p class="text-xs text-gray-300">Bioma Local</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Memórias Section -->
+        <section id="memorias" class="py-24 px-6 max-w-7xl mx-auto">
+            <div class="mb-16 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Memórias da Região</h2>
+                <p class="text-textMuted max-w-2xl mx-auto">Histórias contadas por quem viveu e sentiu as transformações de Iguape.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Memory Card -->
+                <div class="glass-panel p-8 rounded-2xl border border-borderWhite flex flex-col h-full hover:-translate-y-1 transition-transform duration-300">
+                    <svg class="text-primary w-8 h-8 mb-4 opacity-50" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
+                        <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
+                    </svg>
+                    <p class="text-sm text-textMuted flex-grow mb-6 leading-relaxed">
+                        "Meu avô contava que, quando ele era criança, ainda dava para pular de um lado para o outro do valo. Hoje, parece um mar furioso que engoliu as terras da nossa família."
+                    </p>
+                    <div class="flex items-center gap-3 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-surfaceLight border border-borderWhite flex items-center justify-center font-bold text-sm text-primary">
+                            MS
+                        </div>
+                        <div>
+                            <h5 class="text-sm font-bold text-textMain">Maria da Silva</h5>
+                            <span class="text-xs text-textMuted">Moradora de Iguape</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Memory Card -->
+                <div class="glass-panel p-8 rounded-2xl border border-borderWhite flex flex-col h-full hover:-translate-y-1 transition-transform duration-300">
+                    <svg class="text-primary w-8 h-8 mb-4 opacity-50" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
+                        <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
+                    </svg>
+                    <p class="text-sm text-textMuted flex-grow mb-6 leading-relaxed">
+                        "Perpetua-se até os dias atuais costumes dos antigos pescadores... Os remanescentes permanecem praticando os costumes e tradições dos antigos, a pesca da manjuba sendo protagonista, em especial nos meses de setembro e novembro."
+                    </p>
+                    <div class="flex items-center gap-3 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-surfaceLight border border-borderWhite flex items-center justify-center font-bold text-sm text-primary">
+                            AF
+                        </div>
+                        <div>
+                            <h5 class="text-sm font-bold text-textMain">Ana Flávia dos Santos</h5>
+                            <span class="text-xs text-textMuted">Família Caiçara</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Memory Card -->
+                <div class="glass-panel p-8 rounded-2xl border border-borderWhite flex flex-col h-full hover:-translate-y-1 transition-transform duration-300">
+                    <svg class="text-primary w-8 h-8 mb-4 opacity-50" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
+                        <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
+                    </svg>
+                    <p class="text-sm text-textMuted flex-grow mb-6 leading-relaxed">
+                        "Lembro das histórias sobre a época do ouro e do arroz. O Valo Grande foi um símbolo de progresso que acabou cobrando um preço muito alto da nossa cidade."
+                    </p>
+                    <div class="flex items-center gap-3 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-surfaceLight border border-borderWhite flex items-center justify-center font-bold text-sm text-primary">
+                            AL
+                        </div>
+                        <div>
+                            <h5 class="text-sm font-bold text-textMain">Ana Luíza</h5>
+                            <span class="text-xs text-textMuted">Professora de História</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Artigos Section -->
+        <section id="artigos" class="py-24 px-6 relative bg-surfaceLight/30 border-y border-borderWhite">
+            <div class="max-w-4xl mx-auto">
+                <div class="flex items-center justify-between mb-12">
+                    <div>
+                        <h2 class="text-3xl font-bold mb-2">Acervo Acadêmico</h2>
+                        <p class="text-textMuted">Trabalhos e pesquisas sobre a região.</p>
+                    </div>
+                    <button class="text-sm font-semibold text-primary hover:text-primaryGlow transition-colors hidden sm:block">Ver todos os artigos &rarr;</button>
+                </div>
+
+                <div class="flex flex-col gap-4">
+                    <!-- Article Item 1 -->
+                    <a href="assets/pdfs/Producao_Sustentavel_Papel_Aguape.pdf" target="_blank" class="group glass-panel p-6 rounded-2xl border border-borderWhite hover:border-primary/50 transition-all flex flex-col sm:flex-row gap-6 items-start sm:items-center">
+                        <div class="w-12 h-12 rounded-xl bg-surface flex items-center justify-center border border-borderWhite group-hover:bg-primary/10 transition-colors shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-textMuted group-hover:text-primary transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                        </div>
+                        <div class="flex-grow">
+                            <h4 class="text-lg font-bold text-textMain mb-1 group-hover:text-primary transition-colors">Produção Sustentável de Papel a Partir do Aguapé</h4>
+                            <p class="text-sm text-textMuted mb-2">Utilizar a biomassa do aguapé como matéria-prima para a produção de papel. Uma solução sustentável baseada na economia circular.</p>
+                            <div class="flex gap-3 text-xs text-textMuted">
+                                <span>PDF • 21 KB</span>
+                                <span>Giovanna B. G. Santos</span>
+                            </div>
+                        </div>
+                        <div class="shrink-0 text-textMuted group-hover:text-textMain transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                    </a>
+
+                    <!-- Article Item 2 -->
+                    <a href="assets/pdfs/Valo_Grande_Ferida_Socioambiental.pdf" target="_blank" class="group glass-panel p-6 rounded-2xl border border-borderWhite hover:border-primary/50 transition-all flex flex-col sm:flex-row gap-6 items-start sm:items-center">
+                        <div class="w-12 h-12 rounded-xl bg-surface flex items-center justify-center border border-borderWhite group-hover:bg-primary/10 transition-colors shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-textMuted group-hover:text-primary transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                        </div>
+                        <div class="flex-grow">
+                            <h4 class="text-lg font-bold text-textMain mb-1 group-hover:text-primary transition-colors">Valo Grande: Uma Ferida Sócio-Ambiental</h4>
+                            <p class="text-sm text-textMuted mb-2">Um resgate histórico das datas, processos e implicações da maior obra hídrica do período Imperial em Iguape.</p>
+                            <div class="flex gap-3 text-xs text-textMuted">
+                                <span>PDF • 20 KB</span>
+                                <span>Prof. Gustavo</span>
+                            </div>
+                        </div>
+                        <div class="shrink-0 text-textMuted group-hover:text-textMain transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                    </a>
+
+                    <!-- Article Item 3 -->
+                    <a href="assets/pdfs/Memoria_Viva_Pescadores_Caicaras.pdf" target="_blank" class="group glass-panel p-6 rounded-2xl border border-borderWhite hover:border-primary/50 transition-all flex flex-col sm:flex-row gap-6 items-start sm:items-center">
+                        <div class="w-12 h-12 rounded-xl bg-surface flex items-center justify-center border border-borderWhite group-hover:bg-primary/10 transition-colors shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-textMuted group-hover:text-primary transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                        </div>
+                        <div class="flex-grow">
+                            <h4 class="text-lg font-bold text-textMain mb-1 group-hover:text-primary transition-colors">Memória Viva: Pescadores Caiçaras</h4>
+                            <p class="text-sm text-textMuted mb-2">Relato da perpetuação dos costumes da pesca da manjuba e a adaptação das comunidades tradicionais locais.</p>
+                            <div class="flex gap-3 text-xs text-textMuted">
+                                <span>PDF • 23 KB</span>
+                                <span>Ana Flávia dos Santos</span>
+                            </div>
+                        </div>
+                        <div class="shrink-0 text-textMuted group-hover:text-textMain transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+                <div class="mt-6 text-center sm:hidden">
+                    <button class="text-sm font-semibold text-primary hover:text-primaryGlow transition-colors">Ver todos os artigos &rarr;</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contribua Section (CTA + Form) -->
+        <section id="contribua" class="py-32 px-6 relative">
+            <!-- Glow background -->
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-primary/5 rounded-full blur-[150px] z-[-1] pointer-events-none"></div>
+
+            <div class="max-w-3xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl md:text-5xl font-extrabold mb-6">Contribua com a História</h2>
+                    <p class="text-lg text-textMuted">Ajude a construir o acervo da Escola Azul enviando relatos, fotos históricas ou documentos que narram a história do Valo Grande.</p>
+                </div>
+
+                <div class="glass-panel p-8 md:p-12 rounded-3xl border border-borderWhite shadow-2xl shadow-black/50 relative overflow-hidden">
+                    <!-- Subtle border glow line on top -->
+                    <div class="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
+
+                    <form id="contribution-form" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Name -->
+                            <div class="space-y-2">
+                                <label for="name" class="block text-sm font-medium text-textMuted">Nome Completo</label>
+                                <input type="text" id="name" required class="w-full bg-surface border border-borderWhite rounded-xl px-4 py-3 text-textMain placeholder-textMuted focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all">
+                            </div>
+                            
+                            <!-- Email -->
+                            <div class="space-y-2">
+                                <label for="email" class="block text-sm font-medium text-textMuted">E-mail</label>
+                                <input type="email" id="email" required class="w-full bg-surface border border-borderWhite rounded-xl px-4 py-3 text-textMain placeholder-textMuted focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all">
+                            </div>
+                        </div>
+
+                        <!-- Type -->
+                        <div class="space-y-2">
+                            <label for="type" class="block text-sm font-medium text-textMuted">Tipo de Contribuição</label>
+                            <div class="relative">
+                                <select id="type" class="w-full bg-surface border border-borderWhite rounded-xl px-4 py-3 text-textMain appearance-none focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all cursor-pointer">
+                                    <option value="relato">Relato ou Memória Escrita</option>
+                                    <option value="foto">Foto Histórica / Atual</option>
+                                    <option value="documento">Documento / Artigo</option>
+                                    <option value="outro">Outro</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-textMuted">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Textarea -->
+                        <div class="space-y-2">
+                            <label for="message" class="block text-sm font-medium text-textMuted">Sua Memória ou Mensagem</label>
+                            <textarea id="message" rows="4" placeholder="Escreva aqui o seu relato..." class="w-full bg-surface border border-borderWhite rounded-xl px-4 py-3 text-textMain placeholder-textMuted focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-y"></textarea>
+                        </div>
+
+                        <!-- Drag and Drop -->
+                        <div class="space-y-2">
+                            <label class="block text-sm font-medium text-textMuted">Anexar Arquivos</label>
+                            <div id="dropzone" class="border-2 border-dashed border-borderWhite rounded-xl p-8 text-center transition-all cursor-pointer hover:bg-surfaceLight hover:border-primary/50 group relative">
+                                <input type="file" id="file-upload" multiple class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
+                                <div class="flex flex-col items-center justify-center space-y-3 pointer-events-none">
+                                    <div class="w-12 h-12 rounded-full bg-surface flex items-center justify-center text-textMuted group-hover:text-primary transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-medium text-textMain">Clique para fazer upload ou arraste os arquivos aqui</p>
+                                        <p class="text-xs text-textMuted mt-1">PDF, JPG, PNG (Max 10MB)</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul id="file-list" class="mt-3 space-y-2 text-sm text-textMuted"></ul>
+                        </div>
+
+                        <!-- Submit -->
+                        <button type="submit" class="w-full btn-primary py-4 rounded-xl font-bold text-lg transition-all flex justify-center items-center gap-2 group mt-6">
+                            Enviar Contribuição
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-borderWhite bg-background pt-16 pb-8 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-2">
+                    <a href="#" class="flex items-center gap-2 mb-4">
+                        <div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-white" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.381z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <span class="font-bold text-lg text-textMain">Escola Azul</span>
+                    </a>
+                    <p class="text-sm text-textMuted max-w-sm">
+                        Um projeto educacional dedicado à preservação e estudo da história do Valo Grande em Iguape. Preservando memórias para o futuro.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Navegação</h4>
+                    <ul class="space-y-2 text-sm text-textMuted">
+                        <li><a href="#historia" class="hover:text-primary transition-colors">História</a></li>
+                        <li><a href="#fotos" class="hover:text-primary transition-colors">Galeria de Fotos</a></li>
+                        <li><a href="#memorias" class="hover:text-primary transition-colors">Memórias da Comunidade</a></li>
+                        <li><a href="#artigos" class="hover:text-primary transition-colors">Acervo Acadêmico</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-textMain mb-4">Projeto</h4>
+                    <ul class="space-y-2 text-sm text-textMuted">
+                        <li><a href="#" class="hover:text-primary transition-colors">Sobre a Escola Azul</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Termos de Uso</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Política de Privacidade</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-borderWhite text-xs text-textMuted">
+                <p>&copy; 2026 Projeto Escola Azul - Centro Paula Souza. Todos os direitos reservados.</p>
+                <div class="flex gap-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-textMain transition-colors">Instagram</a>
+                    <a href="#" class="hover:text-textMain transition-colors">Facebook</a>
+                    <a href="#" class="hover:text-textMain transition-colors">YouTube</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Music Player -->
+    <div id="music-player-container" class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+        <!-- Expanded Panel -->
+        <div id="music-panel" class="glass-panel w-72 rounded-2xl border border-borderWhite mb-4 p-5 shadow-2xl opacity-0 translate-y-4 pointer-events-none transition-all duration-300 transform scale-95 origin-bottom-right">
+            <div class="flex items-center justify-between mb-4">
+                <h4 class="font-bold text-sm text-textMain flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" /></svg>
+                    Trilha Sonora
+                </h4>
+            </div>
+            
+            <div class="mb-4">
+                <div class="text-xs text-textMuted mb-1 font-semibold tracking-wider uppercase">Tocando agora</div>
+                <div id="current-track-name" class="text-sm font-bold text-primary truncate">Selecione uma música</div>
+            </div>
+
+            <!-- Progress -->
+            <div class="w-full bg-surfaceLight rounded-full h-1.5 mb-4 cursor-pointer relative" id="progress-container">
+                <div class="bg-primary h-1.5 rounded-full w-0 transition-all duration-100 absolute left-0 top-0" id="progress-bar"></div>
+            </div>
+
+            <!-- Controls -->
+            <div class="flex items-center justify-center gap-6 mb-5">
+                <button id="prev-btn" class="text-textMuted hover:text-primary transition-colors focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.066 11.2a1 1 0 000 1.6l5.334 4A1 1 0 0019 16V8a1 1 0 00-1.6-.8l-5.333 4zM4.066 11.2a1 1 0 000 1.6l5.334 4A1 1 0 0011 16V8a1 1 0 00-1.6-.8l-5.334 4z" /></svg>
+                </button>
+                <button id="play-btn" class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white hover:scale-105 transition-transform shadow-lg shadow-primary/30 focus:outline-none">
+                    <!-- Play Icon -->
+                    <svg id="play-icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" /></svg>
+                    <!-- Pause Icon -->
+                    <svg id="pause-icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" /></svg>
+                </button>
+                <button id="next-btn" class="text-textMuted hover:text-primary transition-colors focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.933 12.8a1 1 0 000-1.6L6.6 7.2A1 1 0 005 8v8a1 1 0 001.6.8l5.333-4zM19.933 12.8a1 1 0 000-1.6l-5.333-4A1 1 0 0013 8v8a1 1 0 001.6.8l5.333-4z" /></svg>
+                </button>
+            </div>
+
+            <!-- Playlist -->
+            <div class="border-t border-borderWhite pt-3 mt-2 max-h-32 overflow-y-auto pr-1 text-sm custom-scrollbar flex flex-col gap-1" id="playlist">
+                <!-- JS will populate -->
+            </div>
+        </div>
+
+        <!-- Floating Button -->
+        <button id="music-toggle-btn" class="w-14 h-14 rounded-full bg-surface glass-panel border border-borderWhite flex items-center justify-center text-primary shadow-lg hover:scale-105 transition-transform z-50 relative focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" /></svg>
+            <span id="music-indicator" class="absolute top-0 right-0 w-3 h-3 bg-secondary rounded-full hidden border-2 border-surface animate-pulse"></span>
+        </button>
+    </div>
+    
+    <!-- Audio Element -->
+    <audio id="main-audio"></audio>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Custom Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
