@@ -74,6 +74,7 @@
                     <a href="#fotos" class="text-sm font-medium text-textMuted hover:text-textMain transition-colors">Fotos</a>
                     <a href="#memorias" class="text-sm font-medium text-textMuted hover:text-textMain transition-colors">Memórias</a>
                     <a href="#artigos" class="text-sm font-medium text-textMuted hover:text-textMain transition-colors">Artigos</a>
+                    <a href="#pesquisas" class="text-sm font-medium text-textMuted hover:text-textMain transition-colors">Notícias</a>
                 </nav>
                 
                 <div class="hidden md:block">
@@ -96,6 +97,7 @@
                 <a href="#fotos" class="mobile-link text-sm font-medium text-textMuted hover:text-textMain px-2 py-1">Fotos</a>
                 <a href="#memorias" class="mobile-link text-sm font-medium text-textMuted hover:text-textMain px-2 py-1">Memórias</a>
                 <a href="#artigos" class="mobile-link text-sm font-medium text-textMuted hover:text-textMain px-2 py-1">Artigos</a>
+                <a href="#pesquisas" class="mobile-link text-sm font-medium text-textMuted hover:text-textMain px-2 py-1">Notícias</a>
                 <a href="#contribua" class="mobile-link text-primary font-semibold px-2 py-1">Contribua com a História</a>
             </div>
         </div>
@@ -442,6 +444,27 @@
                 </div>
                 <div class="mt-6 text-center sm:hidden">
                     <button class="text-sm font-semibold text-primary hover:text-primaryGlow transition-colors">Ver todos os artigos &rarr;</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pesquisas Relacionadas (Google News) -->
+        <section id="pesquisas" class="py-24 px-6 bg-surfaceLight/30 border-y border-borderWhite">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <div class="inline-block px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold tracking-wider uppercase mb-4">
+                        Atualizações em Tempo Real
+                    </div>
+                    <h2 class="text-4xl font-extrabold mb-4">Pesquisas Relacionadas</h2>
+                    <p class="text-lg text-textMuted max-w-2xl mx-auto">Últimas notícias do Google News sobre o Valo Grande e a cidade de Iguape.</p>
+                </div>
+                
+                <div id="news-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- JS will populate news cards here -->
+                    <div class="col-span-full text-center py-12 text-textMuted flex flex-col items-center justify-center gap-4" id="news-loader">
+                        <svg class="w-8 h-8 text-primary/50 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                        <p>Buscando notícias recentes no Google News...</p>
+                    </div>
                 </div>
             </div>
         </section>

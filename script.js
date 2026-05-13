@@ -287,4 +287,66 @@ document.addEventListener('DOMContentLoaded', () => {
 
         loadTrack();
     }
+
+    // 7. Google News Fetcher (rss2json)
+    const newsContainer = document.getElementById('news-container');
+    const newsLoader = document.getElementById('news-loader');
+
+    if (newsContainer && newsLoader) {
+        // Query Google News via rss2json API
+        const rssUrl = "https://news.google.com/rss/search?q=valo+grande+iguape&hl=pt-BR&gl=BR&ceid=BR:pt-419";
+        const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'ok' && data.items && data.items.length > 0) {
+                    newsLoader.remove();
+                    
+                    // Take only top 6 news
+                    const topNews = data.items.slice(0, 6);
+                    
+                    topNews.forEach(item => {
+                        const pubDate = new Date(item.pubDate).toLocaleDateString('pt-BR');
+                        
+                        // Clean up title (Google News sometimes appends source name at the end separated by " - ")
+                        let cleanTitle = item.title;
+                        const lastDash = cleanTitle.lastIndexOf(" - ");
+                        let source = "Google News";
+                        if (lastDash > 0) {
+                            source = cleanTitle.substring(lastDash + 3);
+                            cleanTitle = cleanTitle.substring(0, lastDash);
+                        }
+
+                        const card = document.createElement('a');
+                        card.href = item.link;
+                        card.target = '_blank';
+                        card.className = "group glass-panel p-6 rounded-2xl border border-borderWhite hover:border-primary/50 transition-all flex flex-col justify-between h-full hover:shadow-lg hover:-translate-y-1 bg-surface/50";
+                        
+                        card.innerHTML = `
+                            <div>
+                                <div class="flex items-center gap-2 mb-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" /></svg>
+                                    <span class="text-xs font-semibold text-primary uppercase tracking-wider">${source}</span>
+                                </div>
+                                <h4 class="text-lg font-bold text-textMain mb-3 group-hover:text-primary transition-colors line-clamp-3">${cleanTitle}</h4>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-borderWhite flex justify-between items-center text-xs text-textMuted">
+                                <span>${pubDate}</span>
+                                <span class="font-medium text-primary flex items-center gap-1 group-hover:gap-2 transition-all">
+                                    Ler mais <span aria-hidden="true">&rarr;</span>
+                                </span>
+                            </div>
+                        `;
+                        newsContainer.appendChild(card);
+                    });
+                } else {
+                    newsLoader.innerHTML = "<p>Nenhuma notícia encontrada no momento.</p>";
+                }
+            })
+            .catch(error => {
+                console.error("Error fetching news:", error);
+                newsLoader.innerHTML = "<p>Não foi possível carregar as notícias. Tente novamente mais tarde.</p>";
+            });
+    }
 });
