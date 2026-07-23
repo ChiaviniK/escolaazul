@@ -84,3 +84,37 @@ header.scrolled .glass-panel {
     background: rgba(255, 255, 255, 0.9);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
 }
+
+/* Lightbox Modal Custom Styles */
+#lightbox-modal {
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#lightbox-modal.active {
+    display: flex !important;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Gallery Filter Buttons */
+.gallery-filter-btn {
+    transition: all 0.2s ease;
+}
+
+.gallery-filter-btn.active {
+    background-color: #0ea5e9;
+    color: #ffffff;
+    border-color: #0ea5e9;
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+}
+
+/* Card hover animation for spotlight */
+.spotlight-card {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.spotlight-card:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 20px 40px -15px rgba(14, 165, 233, 0.2);
+}
+

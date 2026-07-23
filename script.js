@@ -349,4 +349,54 @@ document.addEventListener('DOMContentLoaded', () => {
                 newsLoader.innerHTML = "<p>Não foi possível carregar as notícias. Tente novamente mais tarde.</p>";
             });
     }
+
+    // 8. Lightbox Modal Logic
+    const lightboxModal = document.getElementById('lightbox-modal');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxTitle = document.getElementById('lightbox-title');
+    const lightboxDesc = document.getElementById('lightbox-desc');
+    const lightboxClose = document.getElementById('lightbox-close');
+
+    if (lightboxModal && lightboxImg) {
+        document.querySelectorAll('.lightbox-trigger').forEach(trigger => {
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                const src = trigger.getAttribute('data-src') || trigger.querySelector('img')?.src;
+                const title = trigger.getAttribute('data-title') || trigger.querySelector('h4')?.innerText || '';
+                const desc = trigger.getAttribute('data-desc') || trigger.querySelector('p')?.innerText || '';
+
+                if (src) {
+                    lightboxImg.src = src;
+                    lightboxTitle.innerText = title;
+                    lightboxDesc.innerText = desc;
+                    lightboxModal.classList.remove('hidden');
+                    lightboxModal.classList.add('flex', 'active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        function closeLightbox() {
+            lightboxModal.classList.add('hidden');
+            lightboxModal.classList.remove('flex', 'active');
+            document.body.style.overflow = '';
+        }
+
+        if (lightboxClose) {
+            lightboxClose.addEventListener('click', closeLightbox);
+        }
+
+        lightboxModal.addEventListener('click', (e) => {
+            if (e.target === lightboxModal) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !lightboxModal.classList.contains('hidden')) {
+                closeLightbox();
+            }
+        });
+    }
 });
+

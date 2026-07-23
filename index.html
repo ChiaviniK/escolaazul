@@ -75,6 +75,7 @@
                     <a href="#memorias" class="text-sm font-medium text-textMuted hover:text-textMain transition-colors">Memórias</a>
                     <a href="#artigos" class="text-sm font-medium text-textMuted hover:text-textMain transition-colors">Artigos</a>
                     <a href="#pesquisas" class="text-sm font-medium text-textMuted hover:text-textMain transition-colors">Notícias</a>
+                    <a href="#contato" class="text-sm font-medium text-textMuted hover:text-textMain transition-colors">Contato</a>
                 </nav>
                 
                 <div class="hidden md:block">
@@ -98,6 +99,7 @@
                 <a href="#memorias" class="mobile-link text-sm font-medium text-textMuted hover:text-textMain px-2 py-1">Memórias</a>
                 <a href="#artigos" class="mobile-link text-sm font-medium text-textMuted hover:text-textMain px-2 py-1">Artigos</a>
                 <a href="#pesquisas" class="mobile-link text-sm font-medium text-textMuted hover:text-textMain px-2 py-1">Notícias</a>
+                <a href="#contato" class="mobile-link text-sm font-medium text-textMuted hover:text-textMain px-2 py-1">Contato</a>
                 <a href="#contribua" class="mobile-link text-primary font-semibold px-2 py-1">Contribua com a História</a>
             </div>
         </div>
@@ -223,84 +225,215 @@
         <!-- Fotos Section -->
         <section id="fotos" class="py-24 px-6 relative bg-surfaceLight/30 border-y border-borderWhite overflow-hidden">
             <div class="max-w-7xl mx-auto">
-                <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-6">
                     <div>
-                        <h2 class="text-3xl md:text-4xl font-bold mb-4">Galeria de Registros</h2>
-                        <p class="text-textMuted max-w-xl">Um contraste visual entre o passado próspero do ciclo do arroz e a realidade atual do canal.</p>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-bold tracking-wider uppercase mb-3">
+                            <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span> Acervo Fotográfico Atualizado
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-bold mb-3">Galeria de Registros & Pesquisa</h2>
+                        <p class="text-textMuted max-w-xl text-sm md:text-base">Documentação visual completa do Valo Grande, expedições em campo e registros da comunidade Escola Azul.</p>
                     </div>
+                    
                     <!-- Custom Swiper Navigation -->
-                    <div class="flex gap-4">
-                        <button class="swiper-button-prev-custom w-12 h-12 rounded-full border border-borderWhite flex items-center justify-center hover:bg-surface transition-colors text-textMuted hover:text-white group">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 group-hover:-translate-x-1 transition-transform"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+                    <div class="flex items-center gap-4 shrink-0">
+                        <button class="swiper-button-prev-custom w-12 h-12 rounded-full border border-borderWhite bg-surface flex items-center justify-center hover:bg-primary hover:border-primary hover:text-white transition-all text-textMuted shadow-sm group">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 group-hover:-translate-x-0.5 transition-transform"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
                         </button>
-                        <button class="swiper-button-next-custom w-12 h-12 rounded-full border border-borderWhite flex items-center justify-center hover:bg-surface transition-colors text-textMuted hover:text-white group">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 group-hover:translate-x-1 transition-transform"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                        <button class="swiper-button-next-custom w-12 h-12 rounded-full border border-borderWhite bg-surface flex items-center justify-center hover:bg-primary hover:border-primary hover:text-white transition-all text-textMuted shadow-sm group">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 group-hover:translate-x-0.5 transition-transform"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
                         </button>
                     </div>
                 </div>
 
-                <!-- Swiper -->
-                <div class="swiper mySwiper overflow-visible">
+                <!-- Swiper Carousel -->
+                <div class="swiper mySwiper overflow-visible mb-16">
                     <div class="swiper-wrapper">
-                        <!-- Slide 1 -->
-                        <div class="swiper-slide group relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-video cursor-pointer border border-borderWhite">
-                            <img src="assets/fotos/WhatsApp%20Image%202026-05-20%20at%2007.36.22.jpeg" alt="Foto 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <!-- Slide 1: Turma Atual Spotlight -->
+                        <div class="swiper-slide group relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-video cursor-pointer border border-borderWhite shadow-md lightbox-trigger" data-src="assets/fotos/novas_fotos/turma_atual.jpeg" data-title="Turma Atual Escola Azul" data-desc="Alunos e pesquisadores reunidos em expedição ao Valo Grande.">
+                            <img src="assets/fotos/novas_fotos/turma_atual.jpeg" alt="Turma Atual Escola Azul" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute top-4 left-4 z-20">
+                                <span class="bg-primary text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">Destaque • Turma</span>
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                                 <div>
-                                    <h4 class="font-bold text-white mb-1">Registro Histórico 1</h4>
-                                    <p class="text-xs text-gray-300">Acervo Escola Azul</p>
+                                    <h4 class="font-bold text-white text-lg mb-1 flex items-center gap-2">
+                                        Turma Atual Escola Azul
+                                        <svg class="w-4 h-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
+                                    </h4>
+                                    <p class="text-xs text-gray-300">Expedição de campo & preservação da memória caiçara</p>
                                 </div>
                             </div>
                         </div>
-                        <!-- Slide 2 -->
-                        <div class="swiper-slide group relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-video cursor-pointer border border-borderWhite">
-                            <img src="assets/fotos/WhatsApp%20Image%202026-05-20%20at%2007.38.00.jpeg" alt="Foto 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+
+                        <!-- Slide 2: WhatsApp Image 2026-05-20 07.36.22 -->
+                        <div class="swiper-slide group relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-video cursor-pointer border border-borderWhite lightbox-trigger" data-src="assets/fotos/WhatsApp%20Image%202026-05-20%20at%2007.36.22.jpeg" data-title="Valo Grande - Margem Principal" data-desc="Registro da extensão do canal e erosão das margens.">
+                            <img src="assets/fotos/WhatsApp%20Image%202026-05-20%20at%2007.36.22.jpeg" alt="Registro Histórico 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                                 <div>
-                                    <h4 class="font-bold text-white mb-1">Registro Histórico 2</h4>
-                                    <p class="text-xs text-gray-300">Acervo Escola Azul</p>
+                                    <h4 class="font-bold text-white mb-1">Margem Principal do Valo</h4>
+                                    <p class="text-xs text-gray-300">Acervo Histórico Escola Azul</p>
                                 </div>
                             </div>
                         </div>
-                        <!-- Slide 3 -->
-                        <div class="swiper-slide group relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-video cursor-pointer border border-borderWhite">
-                            <img src="assets/fotos/WhatsApp%20Image%202026-05-20%20at%2007.39.03.jpeg" alt="Foto 3" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+
+                        <!-- Slide 3: WhatsApp Image 2026-05-20 07.38.00 -->
+                        <div class="swiper-slide group relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-video cursor-pointer border border-borderWhite lightbox-trigger" data-src="assets/fotos/WhatsApp%20Image%202026-05-20%20at%2007.38.00.jpeg" data-title="Visão Panorâmica do Canal" data-desc="Curso d'água e a interação com o ecossistema local.">
+                            <img src="assets/fotos/WhatsApp%20Image%202026-05-20%20at%2007.38.00.jpeg" alt="Registro Histórico 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                                 <div>
-                                    <h4 class="font-bold text-white mb-1">Registro Histórico 3</h4>
-                                    <p class="text-xs text-gray-300">Acervo Escola Azul</p>
+                                    <h4 class="font-bold text-white mb-1">Visão Panorâmica do Canal</h4>
+                                    <p class="text-xs text-gray-300">Acervo Histórico Escola Azul</p>
                                 </div>
                             </div>
                         </div>
-                        <!-- Slide 4 -->
-                        <div class="swiper-slide group relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-video cursor-pointer border border-borderWhite">
-                            <img src="assets/fotos/WhatsApp%20Image%202026-05-20%20at%2007.39.31.jpeg" alt="Foto 4" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+
+                        <!-- Slide 4: Estudo Ambiental de Campo (f926c1ca) -->
+                        <div class="swiper-slide group relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-video cursor-pointer border border-borderWhite lightbox-trigger" data-src="assets/fotos/novas_fotos/f926c1ca-8d75-4397-ba9c-4e4c29282e2a.jpg" data-title="Estudo Ambiental em Campo" data-desc="Inspeção da vegetação aquática e análise da qualidade da água.">
+                            <img src="assets/fotos/novas_fotos/f926c1ca-8d75-4397-ba9c-4e4c29282e2a.jpg" alt="Estudo Ambiental" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                                 <div>
-                                    <h4 class="font-bold text-white mb-1">Registro Histórico 4</h4>
-                                    <p class="text-xs text-gray-300">Acervo Escola Azul</p>
+                                    <h4 class="font-bold text-white mb-1">Estudo Ambiental em Campo</h4>
+                                    <p class="text-xs text-gray-300">Registros de Pesquisa 2026</p>
                                 </div>
                             </div>
                         </div>
-                        <!-- Slide 5 -->
-                        <div class="swiper-slide group relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-video cursor-pointer border border-borderWhite">
-                            <img src="assets/fotos/WhatsApp%20Image%202026-05-20%20at%2007.39.40.jpeg" alt="Foto 5" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+
+                        <!-- Slide 5: WhatsApp Image 2026-07-23 10.45.44 -->
+                        <div class="swiper-slide group relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-video cursor-pointer border border-borderWhite lightbox-trigger" data-src="assets/fotos/novas_fotos/WhatsApp%20Image%202026-07-23%20at%2010.45.44.jpeg" data-title="Vivência em Campo" data-desc="Atividades interativas dos alunos na margem do canal.">
+                            <img src="assets/fotos/novas_fotos/WhatsApp%20Image%202026-07-23%20at%2010.45.44.jpeg" alt="Atividade em Campo" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                                 <div>
-                                    <h4 class="font-bold text-white mb-1">Registro Histórico 5</h4>
-                                    <p class="text-xs text-gray-300">Acervo Escola Azul</p>
+                                    <h4 class="font-bold text-white mb-1">Vivência em Campo</h4>
+                                    <p class="text-xs text-gray-300">Atividades Escola Azul</p>
                                 </div>
                             </div>
                         </div>
-                        <!-- Slide 6 -->
-                        <div class="swiper-slide group relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-video cursor-pointer border border-borderWhite">
-                            <img src="assets/fotos/WhatsApp%20Image%202026-05-20%20at%2007.39.41.jpeg" alt="Foto 6" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+
+                        <!-- Slide 6: WhatsApp Image 2026-07-23 10.45.45 (1) -->
+                        <div class="swiper-slide group relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-video cursor-pointer border border-borderWhite lightbox-trigger" data-src="assets/fotos/novas_fotos/WhatsApp%20Image%202026-07-23%20at%2010.45.45%20(1).jpeg" data-title="Mapeamento Fluvial" data-desc="Análise do leito fluvial e áreas afetadas pelo assoreamento.">
+                            <img src="assets/fotos/novas_fotos/WhatsApp%20Image%202026-07-23%20at%2010.45.45%20(1).jpeg" alt="Mapeamento Fluvial" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                                 <div>
-                                    <h4 class="font-bold text-white mb-1">Registro Histórico 6</h4>
-                                    <p class="text-xs text-gray-300">Acervo Escola Azul</p>
+                                    <h4 class="font-bold text-white mb-1">Mapeamento Fluvial</h4>
+                                    <p class="text-xs text-gray-300">Expedição Técnica</p>
                                 </div>
                             </div>
+                        </div>
+
+                        <!-- Slide 7: WhatsApp Image 2026-07-23 10.45.45 -->
+                        <div class="swiper-slide group relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-video cursor-pointer border border-borderWhite lightbox-trigger" data-src="assets/fotos/novas_fotos/WhatsApp%20Image%202026-07-23%20at%2010.45.45.jpeg" data-title="Visita Guiada" data-desc="Instrução em campo sobre os impactos sócio-ambientais.">
+                            <img src="assets/fotos/novas_fotos/WhatsApp%20Image%202026-07-23%20at%2010.45.45.jpeg" alt="Visita Guiada" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                <div>
+                                    <h4 class="font-bold text-white mb-1">Visita Guiada ao Canal</h4>
+                                    <p class="text-xs text-gray-300">Expedição Técnica</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 8: WhatsApp Image 2026-07-23 10.46.20 -->
+                        <div class="swiper-slide group relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-video cursor-pointer border border-borderWhite lightbox-trigger" data-src="assets/fotos/novas_fotos/WhatsApp%20Image%202026-07-23%20at%2010.46.20.jpeg" data-title="Vegetação Ciliar" data-desc="Identificação de espécies nativas e proliferação de aguapés.">
+                            <img src="assets/fotos/novas_fotos/WhatsApp%20Image%202026-07-23%20at%2010.46.20.jpeg" alt="Vegetação Ciliar" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                <div>
+                                    <h4 class="font-bold text-white mb-1">Estudo da Vegetação Ciliar</h4>
+                                    <p class="text-xs text-gray-300">Flora Local</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 9: WhatsApp Image 2026-07-23 10.48.28 -->
+                        <div class="swiper-slide group relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-video cursor-pointer border border-borderWhite lightbox-trigger" data-src="assets/fotos/novas_fotos/WhatsApp%20Image%202026-07-23%20at%2010.48.28.jpeg" data-title="Análise de Margens" data-desc="Monitoramento contínuo das transformações topográficas.">
+                            <img src="assets/fotos/novas_fotos/WhatsApp%20Image%202026-07-23%20at%2010.48.28.jpeg" alt="Análise de Margens" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                <div>
+                                    <h4 class="font-bold text-white mb-1">Análise de Margens</h4>
+                                    <p class="text-xs text-gray-300">Registros de Pesquisa</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 10: WhatsApp Image 2026-07-23 10.48.29 (1) -->
+                        <div class="swiper-slide group relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-video cursor-pointer border border-borderWhite lightbox-trigger" data-src="assets/fotos/novas_fotos/WhatsApp%20Image%202026-07-23%20at%2010.48.29%20(1).jpeg" data-title="Integração Comunitária" data-desc="Conversas e levantamento histórico com moradores da região.">
+                            <img src="assets/fotos/novas_fotos/WhatsApp%20Image%202026-07-23%20at%2010.48.29%20(1).jpeg" alt="Integração Comunitária" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                <div>
+                                    <h4 class="font-bold text-white mb-1">Integração Comunitária</h4>
+                                    <p class="text-xs text-gray-300">Memória Viva Caiçara</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 11: WhatsApp Image 2026-07-23 10.48.29 -->
+                        <div class="swiper-slide group relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-video cursor-pointer border border-borderWhite lightbox-trigger" data-src="assets/fotos/novas_fotos/WhatsApp%20Image%202026-07-23%20at%2010.48.29.jpeg" data-title="Entrevistas de Campo" data-desc="Registro oral dos pescadores e guardiões da história.">
+                            <img src="assets/fotos/novas_fotos/WhatsApp%20Image%202026-07-23%20at%2010.48.29.jpeg" alt="Entrevistas de Campo" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                <div>
+                                    <h4 class="font-bold text-white mb-1">Entrevistas de Campo</h4>
+                                    <p class="text-xs text-gray-300">Resgate Cultural</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 12: WhatsApp Image 2026-07-23 10.48.31 -->
+                        <div class="swiper-slide group relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-video cursor-pointer border border-borderWhite lightbox-trigger" data-src="assets/fotos/novas_fotos/WhatsApp%20Image%202026-07-23%20at%2010.48.31.jpeg" data-title="Fauna & Aquicultura" data-desc="Estudo da vida aquática e ecossistema lagunar.">
+                            <img src="assets/fotos/novas_fotos/WhatsApp%20Image%202026-07-23%20at%2010.48.31.jpeg" alt="Fauna e Aquicultura" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                <div>
+                                    <h4 class="font-bold text-white mb-1">Fauna & Aquicultura</h4>
+                                    <p class="text-xs text-gray-300">Bioma Estuarino</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 13: WhatsApp Image 2026-07-23 10.49.10 -->
+                        <div class="swiper-slide group relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-video cursor-pointer border border-borderWhite lightbox-trigger" data-src="assets/fotos/novas_fotos/WhatsApp%20Image%202026-07-23%20at%2010.49.10.jpeg" data-title="Acompanhamento Pedagógico" data-desc="Professores e alunos em debate durante a visita.">
+                            <img src="assets/fotos/novas_fotos/WhatsApp%20Image%202026-07-23%20at%2010.49.10.jpeg" alt="Acompanhamento Pedagógico" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                <div>
+                                    <h4 class="font-bold text-white mb-1">Acompanhamento Pedagógico</h4>
+                                    <p class="text-xs text-gray-300">Escola Azul</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 14: WhatsApp Image 2026-07-23 10.49.13 -->
+                        <div class="swiper-slide group relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-video cursor-pointer border border-borderWhite lightbox-trigger" data-src="assets/fotos/novas_fotos/WhatsApp%20Image%202026-07-23%20at%2010.49.13.jpeg" data-title="Panorama das Águas" data-desc="Visão ampla das águas turvas do canal.">
+                            <img src="assets/fotos/novas_fotos/WhatsApp%20Image%202026-07-23%20at%2010.49.13.jpeg" alt="Panorama das Águas" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                <div>
+                                    <h4 class="font-bold text-white mb-1">Panorama das Águas</h4>
+                                    <p class="text-xs text-gray-300">Atualidade do Canal</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Spotlight Feature Section for Turma Atual -->
+                <div class="spotlight-card glass-panel p-8 md:p-10 rounded-3xl border border-borderWhite grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-7 relative rounded-2xl overflow-hidden shadow-xl aspect-[16/10] cursor-pointer lightbox-trigger group" data-src="assets/fotos/novas_fotos/turma_atual.jpeg" data-title="Turma Atual do Projeto Escola Azul" data-desc="Registro dos estudantes e coordenadores dedicados às pesquisas do Valo Grande.">
+                        <img src="assets/fotos/novas_fotos/turma_atual.jpeg" alt="Turma Escola Azul" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                            <span class="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md border border-white/50 flex items-center justify-center text-white opacity-90 group-hover:scale-110 transition-all shadow-xl">
+                                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="lg:col-span-5 flex flex-col justify-center">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-secondary/30 bg-secondary/10 text-secondary text-xs font-bold tracking-wider uppercase mb-4 w-fit">
+                            Acervo em Destaque
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-extrabold text-textMain mb-4">A Turma do Projeto Escola Azul</h3>
+                        <p class="text-textMuted leading-relaxed mb-6">
+                            Conheça os estudantes e pesquisadores que estão à frente do mapeamento histórico, entrevistas com a comunidade caiçara e análise de impactos sócio-ambientais do Valo Grande em Iguape.
+                        </p>
+                        <div class="flex items-center gap-4">
+                            <button class="lightbox-trigger btn-primary px-6 py-3 rounded-full text-sm font-semibold flex items-center gap-2" data-src="assets/fotos/novas_fotos/turma_atual.jpeg" data-title="Turma Atual do Projeto Escola Azul" data-desc="Foto oficial da turma e equipe de campo do Projeto Escola Azul.">
+                                Expanded View
+                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" /></svg>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -583,7 +716,7 @@
                 </div>
                 
                 <div>
-                    <h4 class="font-semibold text-white mb-4">Navegação</h4>
+                    <h4 class="font-semibold text-textMain mb-4">Navegação</h4>
                     <ul class="space-y-2 text-sm text-textMuted">
                         <li><a href="#historia" class="hover:text-primary transition-colors">História</a></li>
                         <li><a href="#fotos" class="hover:text-primary transition-colors">Galeria de Fotos</a></li>
@@ -592,27 +725,82 @@
                     </ul>
                 </div>
                 
-                <div>
-                    <h4 class="font-semibold text-textMain mb-4">Projeto</h4>
-                    <ul class="space-y-2 text-sm text-textMuted">
-                        <li><a href="#" class="hover:text-primary transition-colors">Sobre a Escola Azul</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors">Termos de Uso</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors">Política de Privacidade</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors">Contato</a></li>
-                    </ul>
+                <div id="contato" class="scroll-mt-32">
+                    <h4 class="font-semibold text-textMain mb-4">Desenvolvedor & Contato</h4>
+                    <div class="flex flex-col gap-3">
+                        <!-- GitHub Card Link -->
+                        <a href="https://github.com/chiavinik" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-between p-3.5 rounded-2xl bg-surface border border-borderWhite hover:border-primary/50 hover:bg-primary/5 hover:shadow-md transition-all cursor-pointer">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-surfaceLight border border-borderWhite flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all shrink-0">
+                                    <svg class="w-5 h-5 fill-current text-textMain group-hover:text-white transition-colors" viewBox="0 0 24 24">
+                                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <span class="text-xs font-semibold text-textMuted uppercase tracking-wider block">GitHub</span>
+                                    <span class="text-sm font-bold text-textMain group-hover:text-primary transition-colors">chiavinik</span>
+                                </div>
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-textMuted group-hover:text-primary group-hover:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+
+                        <!-- LinkedIn Card Link -->
+                        <a href="https://www.linkedin.com/in/luizchiavini" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-between p-3.5 rounded-2xl bg-surface border border-borderWhite hover:border-primary/50 hover:bg-primary/5 hover:shadow-md transition-all cursor-pointer">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-surfaceLight border border-borderWhite flex items-center justify-center group-hover:bg-[#0A66C2] group-hover:text-white transition-all shrink-0">
+                                    <svg class="w-5 h-5 fill-current text-[#0A66C2] group-hover:text-white transition-colors" viewBox="0 0 24 24">
+                                        <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <span class="text-xs font-semibold text-textMuted uppercase tracking-wider block">LinkedIn</span>
+                                    <span class="text-sm font-bold text-textMain group-hover:text-primary transition-colors">luizchiavini</span>
+                                </div>
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-textMuted group-hover:text-primary group-hover:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
             
-            <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-borderWhite text-xs text-textMuted">
+            <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-borderWhite text-xs text-textMuted gap-4">
                 <p>&copy; 2026 Projeto Escola Azul - Centro Paula Souza. Todos os direitos reservados.</p>
-                <div class="flex gap-4 mt-4 md:mt-0">
-                    <a href="#" class="hover:text-textMain transition-colors">Instagram</a>
-                    <a href="#" class="hover:text-textMain transition-colors">Facebook</a>
-                    <a href="#" class="hover:text-textMain transition-colors">YouTube</a>
+                <div class="flex items-center gap-6">
+                    <a href="https://github.com/chiavinik" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors flex items-center gap-1.5 font-medium">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                        chiavinik
+                    </a>
+                    <a href="https://www.linkedin.com/in/luizchiavini" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors flex items-center gap-1.5 font-medium">
+                        <svg class="w-4 h-4 fill-current text-[#0A66C2]" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                        luizchiavini
+                    </a>
                 </div>
             </div>
         </div>
     </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/90 backdrop-blur-md p-4 transition-all duration-300">
+        <button id="lightbox-close" class="absolute top-6 right-6 text-white/80 hover:text-white bg-white/10 hover:bg-white/20 rounded-full p-3 transition-all z-50 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+
+        <div class="max-w-5xl max-h-[90vh] flex flex-col items-center justify-center relative w-full px-4">
+            <div class="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl bg-black/50">
+                <img id="lightbox-img" src="" alt="" class="max-h-[75vh] w-auto max-w-full object-contain mx-auto transition-transform duration-300">
+            </div>
+            <div class="mt-4 text-center">
+                <h4 id="lightbox-title" class="text-white text-xl font-bold tracking-tight"></h4>
+                <p id="lightbox-desc" class="text-gray-300 text-sm mt-1 max-w-xl mx-auto"></p>
+            </div>
+        </div>
+    </div>
 
     <!-- Floating Music Player -->
     <div id="music-player-container" class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
